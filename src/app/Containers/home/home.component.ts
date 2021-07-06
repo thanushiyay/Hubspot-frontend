@@ -23,10 +23,24 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    console.log("getcontact1");
+    this.http.get(api.viewContact).subscribe(data => {
+      console.log("getcontact",data);
+    }, error => {
+      alert('unable to connect');
+    })
+
+    this.createNewForm();
+   
+  }
+
+
+  createNewForm()
+  {
     this.contactForm = new FormGroup({
-      email: new FormControl('', [Validators.email]),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      firstName: new FormControl('',[Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       website: new FormControl(''),
       company: new FormControl(''),
       phone: new FormControl(''),
@@ -36,6 +50,9 @@ export class HomeComponent implements OnInit {
       zip: new FormControl('')
     })
   }
+
+
+
 
   submitForm() {
     let contactJson = [];
@@ -52,9 +69,10 @@ export class HomeComponent implements OnInit {
     }
     this.http.post(api.addContact, { userContact: userContact }).subscribe(data => {
       console.log(data);
+      alert("Successfully Saved")
+      this.createNewForm();
     }, error => {
       alert('unable to connect');
     })
   }
-
 }
