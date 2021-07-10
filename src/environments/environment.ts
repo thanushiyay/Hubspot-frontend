@@ -9,7 +9,9 @@ export const environment = {
 const port = "http://localhost:3003";
 export const api = {
   addContact: port + '/api/hubspot/createContacts',
-  viewContact: port + '/api/hubspot/getAllContacts'
+  viewContact: port + '/api/hubspot/getAllContacts',
+  checkContact: port + '/api/hubspot/checkContacts',
+  addData: port + '/api/hubspot/table/add'
 }
 /*
  * For easier debugging in development mode, you can import the following file

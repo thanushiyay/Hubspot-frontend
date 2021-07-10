@@ -11,12 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material';
 import { MatSortModule } from '@angular/material/sort';
 import { HomeComponent } from './Containers/home/home.component';
+import { DeckComponent } from './Containers/deck/deck.component';
+import { LoginComponent } from './Containers/login/login.component';
 // import * as hubspot from '@hubspot/api-client';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    DeckComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

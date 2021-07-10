@@ -23,6 +23,7 @@
     "@angular/router": "~8.1.3",
     "@hubspot/api-client": "^3.4.1",
     "codegen": "^0.1.0",
+    "countapi-js": "^1.0.2",
     "hammerjs": "^2.0.8",
     "hubspot": "^2.3.14",
     "hubspot-api": "^2.17.2-beta.2",

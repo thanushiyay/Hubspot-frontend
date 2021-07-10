@@ -1,0 +1,20 @@
+.info{
+    display: flex;
+    /* width: 600px; */
+    justify-content: space-evenly;
+    margin: auto;
+    font-size: 24px;
+    height:100px;
+
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        .name{
+            text-decoration: underline;
+            margin-bottom:10px;
+        }
+    }
+}
