@@ -23,11 +23,7 @@ export class DeckComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.startTime = new Date();
-    this.dataService.data.subscribe(value => {
-      console.log('data');
-    })
     countapi.hit('deck').then(success => {
-      
       this.route.queryParams.subscribe(params => {
         this.email = params['email'];
         countapi.hit('hubspot.com', params['email'].split('@')[0]).then(data => {
