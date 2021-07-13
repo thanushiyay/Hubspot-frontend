@@ -25,16 +25,11 @@ export class DeckComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log("deck");
-    // countapi.hit('deck').then(success => {
       this.route.queryParams.subscribe(params => {
         this.email = params['email'];
         if (this.email) {
-         
             this.deckViewed = "Sample";
             this.dateOfDeckViewed = this.datepipe.transform(new Date(), 'MMM d, yy, h:mm a z');
-            // this.totalVisitByPerson = data.value;
-            // this.totalVisit = success.value;
-         
         }
         else {
           this.router.navigate(['login']);
