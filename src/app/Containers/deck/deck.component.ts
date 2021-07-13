@@ -90,8 +90,11 @@ export class DeckComponent implements OnInit, OnDestroy {
     console.log("time",time);
     this.http.post(api.addData, requestBody).subscribe(data => {
       console.log(data);
-      alert(data['message']);
-    })
+      alert("Activity Added");
+    }), (error) => {
+      console.log(error);
+      alert("Error Occured");
+    }
     this.isOpened = false;
   }
 
