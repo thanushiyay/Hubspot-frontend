@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { api } from 'src/environments/environment';
 import { DataService } from 'src/app/services/data.service';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-deck',
@@ -12,81 +13,98 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class DeckComponent implements OnInit, OnDestroy {
   totalVisit: number = 0;
-  totalVisitByPerson : number = 0;
-  deckViewed: boolean = false;
-  dateOfDeckViewed: Date;
-  startTime: Date;
-  endTime: Date;
+  totalVisitByPerson: number = 0;
+  deckViewed: string;
+  dateOfDeckViewed: any;
+  startTime: any;
+  endTime: any;
   email: string;
+  isOpened:boolean;
   constructor(private route: ActivatedRoute, private http: HttpClient,
-     private router: Router, private dataService: DataService) { }
+    private router: Router, private dataService: DataService, public datepipe: DatePipe) { }
 
   ngOnInit() {
-    this.startTime = new Date();
-    countapi.hit('deck').then(success => {
+    console.log("deck");
+    // countapi.hit('deck').then(success => {
       this.route.queryParams.subscribe(params => {
         this.email = params['email'];
-        countapi.hit('hubspot.com', params['email'].split('@')[0]).then(data => {
-          this.deckViewed = true;
-          this.dateOfDeckViewed = new Date();
-          this.totalVisitByPerson= data.value;
-          this.totalVisit = success.value;
-        }, error => {
-          console.log(error);
-        })
+        if (this.email) {
+         
+            this.deckViewed = "Sample";
+            this.dateOfDeckViewed = this.datepipe.transform(new Date(), 'MMM d, yy, h:mm a z');
+            // this.totalVisitByPerson = data.value;
+            // this.totalVisit = success.value;
+         
+        }
+        else {
+          this.router.navigate(['login']);
+        }
       })
-    })
-  }
+    }
 
-  navigate(){
+  navigate() {
     console.log('navigate');
     this.router.navigateByUrl('/deckview');
   }
   diff(start, end) {
-    let diffInMilliSeconds = Math.abs(end - start) / 1000;
-
-    // calculate days
-    const days = Math.floor(diffInMilliSeconds / 86400);
-    diffInMilliSeconds -= days * 86400;
-    console.log('calculated days', days);
-
-    // calculate hours
-    const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
-    diffInMilliSeconds -= hours * 3600;
-    console.log('calculated hours', hours);
-
-    // calculate minutes
-    const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
-    diffInMilliSeconds -= minutes * 60;
-    console.log('minutes', minutes);
+    
+    var diff = end - start;
+    var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+    var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+    var minutes = Math.floor(diff / (60 * 1000)) - ((days * 24 * 60) + (hours * 60));
+    var seconds = Math.floor(diff / 1000) - ((days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60));
 
     let difference = '';
     if (days > 0) {
       difference += (days === 1) ? `${days} day, ` : `${days} days, `;
     }
 
-    difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `;
+    if(hours > 0)
+    {
+      difference += (hours === 0 || hours === 1) ? `${hours} hr, ` : `${hours} hrs, `;
+    }
 
-    difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
+    if(minutes > 0)
+    {
+      difference += (minutes === 0 || minutes === 1) ? `${minutes} min` : `${minutes} mins`;
+    }
+    
+    difference += (seconds === 0 || seconds === 1) ? `${seconds} sec` : `${seconds} secs`;
+    
 
+    console.log("diff", difference);
     return difference;
-}
+  }
 
-  ngOnDestroy(){
-    const time = this.diff(this.startTime, new Date());
-    console.log(time);
+  stopTimer(){
+    const time = this.diff(this.startTime, Date.now());
+    console.log("endtime", Date.now());
     let requestBody = {
       "values": {
-        "1": this.email,
-        "2": this.totalVisit,
-        "3": this.totalVisitByPerson,
+        "3": this.deckViewed,
+        "2": this.email,
         "4": this.dateOfDeckViewed,
         "5": time
       }
     }
-    this.http.post(api.addData, requestBody).subscribe(data=> {
+    console.log("time",time);
+    this.http.post(api.addData, requestBody).subscribe(data => {
       console.log(data);
       alert(data['message']);
     })
+    this.isOpened = false;
+  }
+
+
+  startTimer(){
+    console.log("start timer");
+    this.startTime = Date.now();
+    console.log("start timer", this.startTime);
+    this.isOpened = true;
+
+  }
+
+  ngOnDestroy() {
+    
   }
 }

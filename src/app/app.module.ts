@@ -13,6 +13,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { HomeComponent } from './Containers/home/home.component';
 import { DeckComponent } from './Containers/deck/deck.component';
 import { LoginComponent } from './Containers/login/login.component';
+import { AuthGuard } from './services/authGaurd.service';
+import { DatePipe } from '@angular/common';
 // import * as hubspot from '@hubspot/api-client';
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { LoginComponent } from './Containers/login/login.component';
     MatSortModule
   ],
 
-  providers: [],
+  providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

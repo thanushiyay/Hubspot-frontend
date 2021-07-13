@@ -1,16 +1,15 @@
 <div class="info">
+
     <div class="header">
-        <div class="name">Total Viewed</div>
-        
-    <div class="total">{{totalVisit}}</div>
-    </div>
-    <div class="header">
-        <div class="name">Individual Visit</div>
-            <div class="visit">{{totalVisitByPerson}}</div>
+        <div class="name">Deck Name</div>
+        <div class="visit">{{deckViewed}}</div>
     </div>
     <div class="header">
         <div class="name">Date Viewed</div>
         <div class="date">{{dateOfDeckViewed}}</div>
     </div>
-    <!-- <button (click)="navigate()">ViewArticle</button> -->
+    <div class="buttonBlock">
+        <button (click)="startTimer()" [disabled]="isOpened ? true : false">Open Deck</button>
+        <button (click)="stopTimer()" [disabled]="isOpened ? false : true">Close Deck</button>
+    </div> 
 </div>

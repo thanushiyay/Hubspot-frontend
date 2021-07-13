@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    console.log("login");
+    // localStorage.removeItem("AuthEmail");
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
     })
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.http.get(api.checkContact+'/'+this.loginForm.value.email)
     .subscribe(data => {
       if(data['message'] != 'failure'){
+        // localStorage.setItem("AuthEmail", this.loginForm.value.email);
         this.router.navigateByUrl('/deck' + '?email=' +this.loginForm.value.email);
       } else{
         alert('No Contacts created');

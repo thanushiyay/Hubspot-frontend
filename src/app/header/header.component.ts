@@ -17,7 +17,12 @@ export class HeaderComponent implements OnInit {
         if(e.url.includes('login')){
           this.navigationUrl = '/home';
           this.navigationName = 'Create Contact'
-        } else {
+        }
+        else if(e.url.includes('deck')){
+          this.navigationUrl = '/login';
+          this.navigationName = 'Logout'
+        }
+         else {
           this.navigationUrl = '/login';
           this.navigationName = 'Login'
         }
