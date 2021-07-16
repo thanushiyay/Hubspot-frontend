@@ -1,0 +1,64 @@
+<app-salesforce-header></app-salesforce-header>
+<div class="home">
+  <form [formGroup]="contactForm">
+    <div class="flex-row">
+    <div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email" formControlName="email" class="form-control pull-left txtBox"
+          placeholder="Email" />
+      </div>
+
+      <div class="form-group">
+        <label>First Name:</label>
+        <input type="text" formControlName="firstName" class="form-control pull-left txtBox" placeholder="FirstName" />
+        <!-- <span class="requiredStar">*</span> -->
+      </div>
+
+      <div class="form-group">
+        <label>Last Name:</label>
+        <input type="text" formControlName="lastName" class="form-control pull-left txtBox" placeholder="LastName" />
+        <!-- <span class="requiredStar">*</span> -->
+      </div>
+
+      <div class="form-group">
+        <label>Company:</label>
+        <input type="text" class="txtBox company" formControlName="company" placeholder="Company" />
+      </div>
+
+      <div class="form-group">
+        <label>Website:</label>
+        <input type="text" formControlName="website" class="form-control pull-left txtBox" placeholder="WebSite" />
+      </div>
+    </div>
+    <div class="">
+      <div class="form-group">
+        <label>Phone Number:</label>
+        <input type="text" formControlName="phone" class="form-control pull-left txtBox" placeholder="PhoneNumber" />
+      </div>
+
+      <div class="form-group">
+        <label>Address:</label>
+        <input type="text" formControlName="address" class="form-control pull-left txtBox" placeholder="Address" />
+      </div>
+
+      <div class="form-group">
+        <label>City:</label>
+        <input type="text" formControlName="city" class="form-control pull-left txtBox" placeholder="City" />
+      </div>
+
+      <div class="form-group">
+        <label>State:</label>
+        <input type="text" formControlName="state" class="form-control pull-left txtBox" placeholder="State" />
+      </div>
+      <div class="form-group">
+        <label>Zip Code:</label>
+        <input type="text" formControlName="zip" class="form-control pull-left txtBox" placeholder="ZipCode" />
+      </div>
+    </div>
+  </div>
+    <div class="modify-Btns">
+      <button type="button" (click)="submitForm()">Create Contact</button>
+    </div>
+  </form>
+</div>

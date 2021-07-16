@@ -1,0 +1,19 @@
+.header {
+  width: 100%;
+  background-color: rgb(45, 167, 189);
+  display: flex;
+  .title {
+    padding: 20px 0;
+    margin: auto;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  a{
+    float: right;
+    margin: 30px 10px 0 0;
+    text-decoration: none;
+    color:white
+  }
+}

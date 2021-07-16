@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-salesforce-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -14,16 +14,16 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((e) => {
       if(e instanceof NavigationEnd){
-        if(e.url.includes('login')){
-          this.navigationUrl = '/home';
+        if(e.url.includes('salesforce/login')){
+          this.navigationUrl = '/salesforce/home';
           this.navigationName = 'Create Contact'
         }
-        else if(e.url.includes('deck')){
-          this.navigationUrl = '/login';
+        else if(e.url.includes('salesforce/deck')){
+          this.navigationUrl = '/salesforce/login';
           this.navigationName = 'Logout'
         }
          else {
-          this.navigationUrl = '/login';
+          this.navigationUrl = '/salesforce/login';
           this.navigationName = 'Login'
         }
       }
