@@ -11,7 +11,8 @@ export const api = {
   addContact: port + '/api/hubspot/createContacts',
   viewContact: port + '/api/hubspot/getAllContacts',
   checkContact: port + '/api/hubspot/checkContacts',
-  addData: port + '/api/hubspot/table/add'
+  addData: port + '/api/hubspot/table/add',
+  addSurvey: port + '/api/hubspot/table/addSurvey'
 }
 /*
  * For easier debugging in development mode, you can import the following file

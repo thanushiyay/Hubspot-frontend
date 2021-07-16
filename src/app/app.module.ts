@@ -15,6 +15,7 @@ import { DeckComponent } from './Containers/deck/deck.component';
 import { LoginComponent } from './Containers/login/login.component';
 import { AuthGuard } from './services/authGaurd.service';
 import { DatePipe } from '@angular/common';
+import { SurveryDeckComponent } from './Containers/survery-deck/survery-deck.component';
 // import * as hubspot from '@hubspot/api-client';
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DatePipe } from '@angular/common';
     HeaderComponent,
     HomeComponent,
     DeckComponent,
-    LoginComponent
+    LoginComponent,
+    SurveryDeckComponent
   ],
   imports: [
     BrowserModule,

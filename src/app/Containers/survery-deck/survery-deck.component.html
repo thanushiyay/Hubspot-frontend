@@ -1,0 +1,15 @@
+<div class="info">
+
+    <div class="header">
+        <div class="name">Deck Name</div>
+        <div class="visit">{{deckViewed}}</div>
+    </div>
+    <div class="header">
+        <div class="name">Date</div>
+        <div class="date">{{completionDate}}</div>
+    </div>
+    <div class="buttonBlock">
+        <button (click)="startTimer()" [disabled]="isOpened ? true : false">Take Survey</button>
+        <button (click)="stopTimer()" [disabled]="isOpened ? false : true">Complete Survey</button>
+    </div> 
+</div>
