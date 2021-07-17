@@ -11,7 +11,7 @@ import { LoginComponent as SalesFroceLoginComponent } from './SalesforceContaine
 import { SurveryDeckComponent  as SalesForceSurveyDeckComponent } from './SalesforceContainers/survery-deck/survery-deck.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'hubspot/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'salesforce/home', pathMatch: 'full' },
   { path: 'hubspot/home', component: HBHomeComponent, pathMatch: 'full' },
   { path: 'hubspot/login', component: LoginComponent, pathMatch: 'full' },
   { path: 'hubspot/deck', component: DeckComponent},

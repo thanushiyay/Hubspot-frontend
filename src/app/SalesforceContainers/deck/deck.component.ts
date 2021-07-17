@@ -73,14 +73,15 @@ export class DeckComponent implements OnInit, OnDestroy {
     console.log("endtime", Date.now());
     let requestBody = {
       "values": {
-        "3": this.deckViewed,
-        "2": this.email,
-        "4": this.dateOfDeckViewed,
-        "5": time
+        "DeckViewed__c": this.deckViewed,
+        "Email__c": this.email,
+        "CompletionDate__c": new Date(this.dateOfDeckViewed),
+        "Time__c": time,
+        "Name": "Sample"
       }
     }
-    console.log("time",time);
-    this.http.post(api.addData, requestBody).subscribe(data => {
+    console.log("time",requestBody);
+    this.http.post(api.addSalesforceData, requestBody).subscribe(data => {
       console.log(data);
       alert("Activity Added");
     }), (error) => {

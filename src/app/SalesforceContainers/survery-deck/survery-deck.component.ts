@@ -78,20 +78,21 @@ export class SurveryDeckComponent implements OnInit {
     console.log("endtime", Date.now());
     let requestBody = {
       "values": {
-        "3": this.deckViewed,
-        "2": this.email,
-        "4": this.completionDate,
-        "5": time
+        "DeckViewed__c": this.deckViewed,
+        "Email__c": this.email,
+        "CompletionDate__c": this.completionDate,
+        "Time__c": time
       }
     }
     console.log("time",time);
-    this.http.post(api.addSurvey, requestBody).subscribe(data => {
-      console.log(data);
-      alert("Activity Added");
-    }), (error) => {
-      console.log(error);
-      alert("Error Occured");
-    }
+    console.log(requestBody);
+    // this.http.post(api.addSurvey, requestBody).subscribe(data => {
+    //   console.log(data);
+    //   alert("Activity Added");
+    // }), (error) => {
+    //   console.log(error);
+    //   alert("Error Occured");
+    // }
     this.isOpened = false;
   }
 

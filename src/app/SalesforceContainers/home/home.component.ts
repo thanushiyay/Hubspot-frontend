@@ -41,13 +41,7 @@ export class HomeComponent implements OnInit {
       email: new FormControl('', [Validators.email, Validators.required]),
       firstName: new FormControl('',[Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      website: new FormControl(''),
-      company: new FormControl(''),
-      phone: new FormControl(''),
-      address: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zip: new FormControl('')
+      phone: new FormControl('')
     })
   }
 
@@ -56,18 +50,19 @@ export class HomeComponent implements OnInit {
 
   submitForm() {
     let contactJson = [];
-    Object.keys(this.contactForm.value).forEach((key) => {
-      if (this.contactForm.value[key] != '') {
-        contactJson.push({
-          property: key,
-          value: this.contactForm.value[key]
-        })
-      }
-    })
+    // Object.keys(this.contactForm.value).forEach((key) => {
+    //   if (this.contactForm.value[key] != '') {
+    //     contactJson.push({
+    //       property: key,
+    //       value: this.contactForm.value[key]
+    //     })
+    //   }
+    // })
     const userContact = {
-      properties: contactJson
+      userContact: this.contactForm.value
     }
-    this.http.post(api.addContact, { userContact: userContact }).subscribe(data => {
+    console.log(this.contactForm.value);
+    this.http.post(api.addSalesforceContact, { userContact: this.contactForm.value }).subscribe(data => {
       console.log(data);
       alert("Successfully Saved")
       this.createNewForm();

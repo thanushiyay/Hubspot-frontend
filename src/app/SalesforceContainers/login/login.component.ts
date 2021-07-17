@@ -22,13 +22,26 @@ export class LoginComponent implements OnInit {
 
   submitForm(){
     console.log(this.loginForm.value.email);
-    this.http.get(api.checkContact+'/'+this.loginForm.value.email)
+    this.http.get(api.checkSalesforceContact)
     .subscribe(data => {
-      if(data['message'] != 'failure'){
-        this.router.navigateByUrl('/deck' + '?email=' +this.loginForm.value.email);
-      } else{
-        alert('No Contacts created');
-      }
+      console.log(data);
+      let check = false;
+      [...data['Contacts'].records].forEach(data => {
+        console.log(data);
+        if(data.Email == this.loginForm.value.email){
+          check = true;
+          return false;
+        }
+      })
+      if(check){
+        this.router.navigateByUrl('/salesforce/deck' + '?email=' +this.loginForm.value.email);
+      } else
+      alert('No Contacts created');
+      // if(data['message'] != 'failure'){
+      //   this.router.navigateByUrl('/deck' + '?email=' +this.loginForm.value.email);
+      // } else{
+      //   alert('No Contacts created');
+      // }
     })
   }
 
