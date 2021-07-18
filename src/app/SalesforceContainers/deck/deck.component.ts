@@ -75,7 +75,7 @@ export class DeckComponent implements OnInit, OnDestroy {
       "values": {
         "DeckViewed__c": this.deckViewed,
         "Email__c": this.email,
-        "CompletionDate__c": new Date(this.dateOfDeckViewed),
+        "DateOfDeckViewed__c": new Date(this.dateOfDeckViewed),
         "Time__c": time,
         "Name": "Sample"
       }

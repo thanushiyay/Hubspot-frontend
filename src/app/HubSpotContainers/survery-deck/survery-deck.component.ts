@@ -84,7 +84,7 @@ export class SurveryDeckComponent implements OnInit {
         "5": time
       }
     }
-    console.log("time",time);
+    console.log("time",requestBody);
     this.http.post(api.addSurvey, requestBody).subscribe(data => {
       console.log(data);
       alert("Activity Added");

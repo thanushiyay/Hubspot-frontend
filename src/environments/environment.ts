@@ -16,8 +16,8 @@ export const api = {
   addSalesforceContact: port + '/api/salesforce/createContacts',
   viewSalesforceContact: port + '/api/salesforce/getAllContacts',
   checkSalesforceContact: port + '/api/salesforce/getAllContacts',
-  addSalesforceData: port + '/api/salesforce/addSurvey',
-  // addSalesforceSurvey: port + '/api/salesforce/table/addSurvey'
+  addSalesforceData: port + '/api/salesforce/addDeck',
+  addSalesforceSurvey: port + '/api/salesforce/addSurvey'
 }
 /*
  * For easier debugging in development mode, you can import the following file
