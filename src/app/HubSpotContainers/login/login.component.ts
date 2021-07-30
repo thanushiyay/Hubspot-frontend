@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.http.get(api.checkContact+'/'+this.loginForm.value.email)
     .subscribe(data => {
       if(data['message'] != 'failure'){
-        this.router.navigateByUrl('/deck' + '?email=' +this.loginForm.value.email);
+        this.router.navigateByUrl('/hubspot/deck' + '?email=' +this.loginForm.value.email);
       } else{
         alert('No Contacts created');
       }

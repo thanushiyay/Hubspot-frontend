@@ -34,15 +34,12 @@ export class SurveryDeckComponent implements OnInit {
             this.completionDate = this.datepipe.transform(new Date(), 'MMM d, yy, h:mm a z');
         }
         else {
-          this.router.navigate(['login']);
+          console.log("login from survey");
+          this.router.navigateByUrl('salesforce/login');
         }
       })
     }
 
-  navigate() {
-    console.log('navigate');
-    this.router.navigateByUrl('/deckview');
-  }
   diff(start, end) {
     
     var diff = end - start;
@@ -78,11 +75,10 @@ export class SurveryDeckComponent implements OnInit {
     console.log("endtime", Date.now());
     let requestBody = {
       "values": {
-        "DeckViewed__c": this.deckViewed,
+        "Name": this.deckViewed,
         "Email__c": this.email,
         "CompletionDate__c": new Date(this.completionDate),
-        "Time__c": time,
-        "Name": "Sample"
+        "Time_Taken__c": time
       }
     }
     console.log("time",time);
@@ -90,10 +86,10 @@ export class SurveryDeckComponent implements OnInit {
     this.http.post(api.addSalesforceSurvey, requestBody).subscribe(data => {
       console.log(data);
       alert("Activity Added");
-    }), (error) => {
+    },(error) => {
       console.log(error);
       alert("Error Occured");
-    }
+    })
     this.isOpened = false;
   }
 
